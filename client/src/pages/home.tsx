@@ -79,12 +79,12 @@ const Home = () => {
   };
 
   const achievements = [
-    { emoji: "🏅", title: "Top 50 Finalist", description: "Smart India Hackathon (Internal Round)" },
-    { emoji: "🎓", title: "Student Director", description: "Unstop" },
-    { emoji: "🧠", title: "PWC Launchpad Trainee", description: "Professional Development Program" },
-    { emoji: "🗣️", title: "Management Head", description: "Public Speaking Society" },
-    { emoji: "💻", title: "Web Development Team", description: "GDG" },
-    { emoji: "🚀", title: "Top 20 Finalist", description: "Standard Chartered Hackathon (India-wide)" },
+    { emoji: "🏅", title: "Top 50 Finalist", description: "Smart India Hackathon (Internal Round)", detail: "Selected among top 50 teams nationwide for innovative healthcare solution" },
+    { emoji: "🎓", title: "Student Director", description: "Unstop", detail: "Leading student community engagement and organizing tech events" },
+    { emoji: "🧠", title: "PWC Launchpad Trainee", description: "Professional Development Program", detail: "Completed intensive training in business consulting and digital transformation" },
+    { emoji: "🗣️", title: "Management Head", description: "Public Speaking Society", detail: "Organized workshops and competitions to enhance communication skills" },
+    { emoji: "💻", title: "Web Development Team", description: "GDG", detail: "Contributing to open-source projects and mentoring junior developers" },
+    { emoji: "🚀", title: "Top 20 Finalist", description: "Standard Chartered Hackathon (India-wide)", detail: "Developed fintech solution for financial inclusion among top 20 teams" },
   ];
 
   return (
@@ -92,7 +92,7 @@ const Home = () => {
       <HaloCursor />
       <Navbar />
       
-      <main className="max-w-[55%] mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Introduction Section */}
         <section id="intro" className="min-h-[calc(100vh-80px)] flex items-center justify-center pt-8">
@@ -109,28 +109,19 @@ const Home = () => {
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex justify-center">
               <Button
-                onClick={() => scrollToSection("projects")}
                 className="px-8 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg font-medium transition-all duration-300 transform hover:scale-105 shadow-lg"
-                data-testid="button-view-work"
+                data-testid="button-download-resume"
               >
-                View My Work
-              </Button>
-              <Button
-                variant="outline"
-                onClick={() => scrollToSection("contact")}
-                className="px-8 py-3 border-border hover:border-primary text-muted-foreground hover:text-primary rounded-lg font-medium transition-all duration-300"
-                data-testid="button-get-in-touch"
-              >
-                Get In Touch
+                Download My Resume
               </Button>
             </div>
           </SpotlightBox>
         </section>
 
         {/* Skills Section */}
-        <section id="skills" className="py-16">
+        <section id="skills" className="py-8">
           <SpotlightBox>
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">Skills I Have</h2>
@@ -160,7 +151,7 @@ const Home = () => {
         </section>
 
         {/* Projects Section */}
-        <section id="projects" className="py-16">
+        <section id="projects" className="py-8">
           <SpotlightBox>
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">My Projects</h2>
@@ -236,7 +227,7 @@ const Home = () => {
         </section>
 
         {/* Experience Section */}
-        <section id="experience" className="py-16">
+        <section id="experience" className="py-8">
           <SpotlightBox>
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">Work Experience</h2>
@@ -284,7 +275,7 @@ const Home = () => {
         </section>
 
         {/* Achievements Section */}
-        <section id="achievements" className="py-16">
+        <section id="achievements" className="py-8">
           <SpotlightBox>
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">Achievements</h2>
@@ -295,13 +286,14 @@ const Home = () => {
               {achievements.map((achievement, index) => (
                 <div
                   key={index}
-                  className="achievement-item flex items-center gap-4 p-4 bg-secondary/30 border border-border rounded-lg hover:border-primary transition-all duration-300 hover:transform hover:scale-105"
+                  className="achievement-item flex items-start gap-4 p-4 bg-secondary/30 border border-border rounded-lg hover:border-primary transition-all duration-300 hover:transform hover:scale-105"
                   data-testid={`achievement-${index}`}
                 >
-                  <div className="text-2xl">{achievement.emoji}</div>
+                  <div className="text-2xl flex-shrink-0">{achievement.emoji}</div>
                   <div>
                     <h4 className="font-semibold">{achievement.title}</h4>
-                    <p className="text-muted-foreground text-sm">{achievement.description}</p>
+                    <p className="text-muted-foreground text-sm mb-2">{achievement.description}</p>
+                    <p className="text-muted-foreground/80 text-xs">{achievement.detail}</p>
                   </div>
                 </div>
               ))}
@@ -310,7 +302,7 @@ const Home = () => {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-16">
+        <section id="contact" className="py-8">
           <SpotlightBox className="text-center">
             <div className="mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">Let's Connect</h2>
@@ -364,7 +356,7 @@ const Home = () => {
 
       {/* Footer */}
       <footer className="border-t border-border py-8 transition-colors duration-500">
-        <div className="max-w-[55%] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <p className="text-muted-foreground">
               Made with <Heart className="inline text-red-500" size={16} /> by <span className="text-foreground font-semibold">Bhavya</span>
