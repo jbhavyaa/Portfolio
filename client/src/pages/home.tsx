@@ -45,7 +45,11 @@ const Home = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const offsetTop = element.offsetTop - 100; // Scroll just above the section
+      window.scrollTo({ 
+        top: offsetTop, 
+        behavior: "smooth" 
+      });
     }
   };
 
@@ -88,10 +92,10 @@ const Home = () => {
       <HaloCursor />
       <Navbar />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
+      <main className="max-w-[55%] mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* Introduction Section */}
-        <section id="intro" className="min-h-screen flex items-center justify-center">
+        <section id="intro" className="min-h-[calc(100vh-80px)] flex items-center justify-center pt-8">
           <SpotlightBox className="text-center">
             <div className="mb-8">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent font-heading">
@@ -249,7 +253,7 @@ const Home = () => {
                   <div>
                     <h3 className="text-xl font-semibold font-heading">Nandidhi Software Pvt Ltd</h3>
                     <p className="text-primary font-medium flex items-center gap-2 hover:gap-3 transition-all duration-300">
-                      React Developer 
+                      React Developer Intern
                       <ArrowRight 
                         className={`text-sm transition-opacity duration-300 ${isExperienceExpanded ? 'opacity-100' : 'opacity-0'}`} 
                         size={16}
@@ -360,29 +364,11 @@ const Home = () => {
 
       {/* Footer */}
       <footer className="border-t border-border py-8 transition-colors duration-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div className="text-center sm:text-left">
-              <p className="text-muted-foreground">
-                Made with <Heart className="inline text-red-500" size={16} /> by <span className="text-foreground font-semibold">Bhavya</span>
-              </p>
-            </div>
-            <div>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={toggleTheme}
-                className="p-2 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors duration-300"
-                data-testid="button-footer-theme-toggle"
-              >
-                {theme === "dark" ? (
-                  <Moon className="text-yellow-400" size={20} />
-                ) : (
-                  <Sun className="text-yellow-500" size={20} />
-                )}
-                <span className="sr-only">Toggle theme</span>
-              </Button>
-            </div>
+        <div className="max-w-[55%] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-muted-foreground">
+              Made with <Heart className="inline text-red-500" size={16} /> by <span className="text-foreground font-semibold">Bhavya</span>
+            </p>
           </div>
         </div>
       </footer>

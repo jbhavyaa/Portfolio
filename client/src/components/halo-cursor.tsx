@@ -21,7 +21,7 @@ const HaloCursor = ({ targetSection = "intro" }: HaloCursorProps) => {
         e.clientY <= rect.bottom;
 
       if (isInTarget) {
-        setPosition({ x: e.clientX - 10, y: e.clientY - 10 });
+        setPosition({ x: e.clientX - 20, y: e.clientY - 20 });
         setIsVisible(true);
       } else {
         setIsVisible(false);
