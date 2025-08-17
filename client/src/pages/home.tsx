@@ -95,23 +95,34 @@ const Home = () => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Introduction Section */}
-        <section id="intro" className="min-h-[calc(100vh-80px)] flex items-center justify-center pt-8">
-          <SpotlightBox className="text-center">
-            <div className="mb-8">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent font-heading">
-                Hi, I'm <span className="text-primary">Bhavya</span>
+        <section id="intro" className="py-8">
+          <SpotlightBox className="text-center background-3d hover-3d">
+            <div className="particles">
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+            </div>
+            <div className="mb-8 relative z-10">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent font-heading animate-3d">
+                Hi, I'm <span className="text-primary">Bhavya Jamar</span>
               </h1>
               <h2 className="text-xl md:text-2xl lg:text-3xl font-medium text-muted-foreground mb-8 font-heading">
                 Full Stack Developer
               </h2>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed animate-float">
                 I craft digital experiences with passion and precision. Specializing in React, Node.js, and modern web technologies to bring ideas to life.
               </p>
             </div>
             
-            <div className="flex justify-center">
+            <div className="flex justify-center relative z-10">
               <Button
-                className="px-8 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg font-medium transition-all duration-300 transform hover:scale-105 shadow-lg"
+                className="px-8 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg font-medium transition-all duration-300 transform hover:scale-105 hover:rotate-1 shadow-lg hover:shadow-2xl"
                 data-testid="button-download-resume"
               >
                 Download My Resume
@@ -122,7 +133,7 @@ const Home = () => {
 
         {/* Skills Section */}
         <section id="skills" className="py-8">
-          <SpotlightBox>
+          <SpotlightBox className="hover-3d">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">Skills I Have</h2>
               <p className="text-lg text-muted-foreground">Technologies and tools I've worked with and enjoy using</p>
@@ -152,7 +163,7 @@ const Home = () => {
 
         {/* Projects Section */}
         <section id="projects" className="py-8">
-          <SpotlightBox>
+          <SpotlightBox className="hover-3d">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">My Projects</h2>
               <p className="text-lg text-muted-foreground">Explore some of the projects I've worked on. These showcase my skills and expertise in various domains of software development.</p>
@@ -228,7 +239,7 @@ const Home = () => {
 
         {/* Experience Section */}
         <section id="experience" className="py-8">
-          <SpotlightBox>
+          <SpotlightBox className="hover-3d">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">Work Experience</h2>
               <p className="text-lg text-muted-foreground">Companies I've worked with</p>
@@ -276,7 +287,7 @@ const Home = () => {
 
         {/* Achievements Section */}
         <section id="achievements" className="py-8">
-          <SpotlightBox>
+          <SpotlightBox className="hover-3d">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">Achievements</h2>
               <p className="text-lg text-muted-foreground">Milestones and recognitions</p>
@@ -303,7 +314,7 @@ const Home = () => {
 
         {/* Contact Section */}
         <section id="contact" className="py-8">
-          <SpotlightBox className="text-center">
+          <SpotlightBox className="text-center hover-3d">
             <div className="mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">Let's Connect</h2>
               <p className="text-lg text-muted-foreground mb-8">I'm always excited to collaborate on interesting projects or just have a great tech conversation!</p>
