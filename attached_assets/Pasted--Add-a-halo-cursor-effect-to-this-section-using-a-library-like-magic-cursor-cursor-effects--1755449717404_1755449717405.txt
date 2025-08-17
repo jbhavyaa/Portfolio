@@ -1,0 +1,132 @@
+- Add a **halo cursor effect** to this section using a library like `magic-cursor`, `cursor-effects`, or custom CSS/JS.
+
+---
+
+🛠️ 3. SKILLS SECTION
+
+- Headline: **Skills I Have**
+- Subheadline: "Technologies and tools I've worked with and enjoy using"
+
+Organize skills into horizontal categories with **bordered boxes** and relevant icons:
+
+**Languages:**
+- C++  
+- JavaScript  
+- HTML  
+- CSS
+
+**Frameworks:**
+- React  
+- Node.js  
+- Express  
+- TailwindCSS
+
+**Tools:**
+- Git  
+- GitHub  
+- VS Code
+
+**Databases:**
+- MongoDB
+
+All skills should be inside small bordered cards with icon + label, arranged in horizontal scroll or flex-wrap row.
+
+---
+
+📦 4. PROJECTS SECTION
+
+- Heading: **My Projects**
+- Subheading: "Explore some of the projects I've worked on. These showcase my skills and expertise in various domains of software development."
+
+Each project displayed in a 2-column layout inside a spotlightBox:
+
+#### Project 1: **SkillMatch**
+- Left: Project image (use a placeholder)
+- Right:
+- Title: SkillMatch
+- Description: A job portal connecting candidates with job profiles through skill matching.
+- Tech Stack: React, Node.js, MongoDB, Express, Tailwind
+- Bottom-right: GitHub icon with link
+
+#### Project 2: **CricScore**
+- Left: Project image (use placeholder)
+- Right:
+- Title: CricScore
+- Description: A box cricket match management system for tournaments.
+- Tech Stack: React, Node.js, MongoDB
+- Bottom-right: GitHub icon with link
+
+---
+
+💼 5. EXPERIENCE SECTION
+
+- Heading: **Work Experience**
+- Subheading: "Companies I’ve worked with"
+
+One experience card:
+
+**Company:** Nandidhi Software Pvt Ltd  
+**Role:** React Developer  
+
+Interaction:
+- Hover over "React Developer" shows ➡️ arrow.
+- On click, expands the box to show:
+- Developed dynamic frontend interfaces using React.
+- Integrated REST APIs and improved UI responsiveness.
+- Collaborated in a full-stack environment with designers and backend devs.
+
+Smooth expand/collapse transition for this card.
+
+---
+
+🏆 6. ACHIEVEMENTS SECTION
+
+List of achievements inside spotlightBox:
+
+- 🏅 Top 50 Finalist – Smart India Hackathon (Internal Round)
+- 🎓 Student Director – Unstop
+- 🧠 PWC Launchpad Trainee
+- 🗣️ Management Head – Public Speaking Society
+- 💻 Web Development Team – GDG
+- 🚀 Top 20 Finalist – Standard Chartered Hackathon (India-wide)
+
+Style them with trophy/checkmark icons, subtle hover effects, and clean layout.
+
+---
+
+📬 7. CONTACT SECTION
+
+**Heading:** Let’s Connect  
+**Subtext:** "I'm always excited to collaborate on interesting projects or just have a great tech conversation!"
+
+Underneath:
+
+**"Ready to start a conversation?"**
+
+- A card/box with:
+- 📧 Email: `your.email@example.com`
+- GitHub, LinkedIn, Instagram icons using React Icons (clickable)
+
+At the bottom of contact section:
+> 💬 I typically respond within 30 minutes!
+
+---
+
+🔻 8. FOOTER
+
+Footer includes:
+
+- Center:  
+**"Made with ❤️ by Bhavya"**
+- Right:  
+Theme toggle button (moon/sun icon again)
+
+---
+
+🧪 OTHER DETAILS
+
+- Use consistent Tailwind utility classes
+- Animate all transitions (e.g., theme, hover, card expand, etc.)
+- Use React component structure for each section
+- Add smooth scroll navigation to section links in the navbar
+- Add favicon with a circle and the letter **B**
