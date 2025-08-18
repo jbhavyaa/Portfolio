@@ -1,7 +1,6 @@
 import { useState } from "react";
-import SkillMatchImg from "./SkillMatch.png";
-import CricScoreImg from "./CricScore.png";
-import Resume from "./BhavyaResume.pdf";
+import SkillMatchImg from "../assets/SkillMatch.png"
+import CricScoreImg from "../assets/CricScore.png"
 
 import {
   Github,
