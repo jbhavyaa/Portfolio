@@ -1,28 +1,33 @@
 import { useState } from "react";
-import { 
-  Github, 
-  Linkedin, 
-  Instagram, 
-  Mail, 
-  ArrowRight, 
+import SkillMatchImg from "./SkillMatch.png";
+import CricScoreImg from "./CricScore.png";
+import Resume from "./BhavyaResume.pdf";
+
+import {
+  Github,
+  Linkedin,
+  Mail,
+  ArrowRight,
   Check,
   MessageCircle,
   Heart,
   Moon,
   Sun,
+  Download,
   Code
 } from "lucide-react";
-import { 
-  SiJavascript, 
-  SiHtml5, 
-  SiCss3, 
+import {
+  SiJavascript,
+  SiHtml5,
+  SiCss3,
+  SiC,
   SiCplusplus,
-  SiReact, 
-  SiNodedotjs, 
-  SiExpress, 
+  SiReact,
+  SiNodedotjs,
+  SiExpress,
   SiTailwindcss,
-  SiGit, 
-  SiGithub, 
+  SiGit,
+  SiGithub,
 
   SiMongodb,
   SiFigma,
@@ -46,9 +51,9 @@ const Home = () => {
     const element = document.getElementById(sectionId);
     if (element) {
       const offsetTop = element.offsetTop - 100; // Scroll just above the section
-      window.scrollTo({ 
-        top: offsetTop, 
-        behavior: "smooth" 
+      window.scrollTo({
+        top: offsetTop,
+        behavior: "smooth"
       });
     }
   };
@@ -59,6 +64,7 @@ const Home = () => {
       { name: "HTML", icon: SiHtml5, color: "text-orange-400" },
       { name: "CSS", icon: SiCss3, color: "text-blue-400" },
       { name: "C++", icon: SiCplusplus, color: "text-purple-400" },
+      { name: "C", icon: SiC, color: "text-purple-400" },
     ],
     "Frameworks": [
       { name: "React", icon: SiReact, color: "text-cyan-400" },
@@ -79,44 +85,48 @@ const Home = () => {
   };
 
   const achievements = [
-    { emoji: "🏅", title: "Top 50 Finalist", description: "Smart India Hackathon (Internal Round)", detail: "Selected among top 50 teams nationwide for innovative healthcare solution" },
     { emoji: "🎓", title: "Student Director", description: "Unstop", detail: "Leading student community engagement and organizing tech events" },
-    { emoji: "🧠", title: "PWC Launchpad Trainee", description: "Professional Development Program", detail: "Completed intensive training in business consulting and digital transformation" },
+    { emoji: "🚀", title: "Top 20 Finalist", description: "Standard Chartered Hackathon (India-wide)", detail: "Developed a project after clearing the coding test for inclusion among top 20 teams" },
+    { emoji: "🧠", title: "PWC Launchpad Trainee", description: "Professional Development Program", detail: "Completed Technology and Transformation Launchpad Program" },
     { emoji: "🗣️", title: "Management Head", description: "Public Speaking Society", detail: "Organized workshops and competitions to enhance communication skills" },
-    { emoji: "💻", title: "Web Development Team", description: "GDG", detail: "Contributing to open-source projects and mentoring junior developers" },
-    { emoji: "🚀", title: "Top 20 Finalist", description: "Standard Chartered Hackathon (India-wide)", detail: "Developed fintech solution for financial inclusion among top 20 teams" },
+    { emoji: "💻", title: "Executive Member", description: "Google Developer Groups", detail: "Contributing to open-source projects and mentoring junior developers" },
+    { emoji: "🏅", title: "Academic Scholar", description: "Mody University", detail: "Recognized each year with a scholarship for outstanding academic performance." },
   ];
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <HaloCursor />
       <Navbar />
-      
+
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        
+
         {/* Introduction Section */}
         <section id="intro" className="py-8">
           <SpotlightBox className="text-center">
             <div className="mb-8">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent font-heading">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent font-heading">
                 Hi, I'm <span className="text-primary">Bhavya Jamar</span>
               </h1>
               <h2 className="text-xl md:text-2xl lg:text-3xl font-medium text-muted-foreground mb-8 font-heading">
                 Full Stack Developer
               </h2>
               <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                I craft digital experiences with passion and precision. Specializing in React, Node.js, and modern web technologies to bring ideas to life.
-              </p>
+                I’m driven to create seamless and engaging digital experiences using React and Node.js. With a keen eye for detail and a love for clean, efficient code, I bring ideas to life in the browser. Every project is an opportunity to craft something meaningful and impactful. </p>
             </div>
-            
+
             <div className="flex justify-center">
-              <Button
-                className="px-8 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg font-medium transition-all duration-300 transform hover:scale-105 shadow-lg"
-                data-testid="button-download-resume"
+              <a
+                href="https://drive.google.com/file/d/1Gk1U_joquP8-Nn2w1LPGcIR00VYwV0S_/view?usp=drivesdk"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-8 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-2xl font-medium transition-all duration-300 transform hover:scale-105 shadow-lg"
+                data-testid="button-view-resume"
               >
-                Download My Resume
-              </Button>
+                View My Resume
+              </a>
             </div>
+
+
           </SpotlightBox>
         </section>
 
@@ -127,7 +137,7 @@ const Home = () => {
               <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">Skills I Have</h2>
               <p className="text-lg text-muted-foreground">Technologies and tools I've worked with and enjoy using</p>
             </div>
-            
+
             <div className="space-y-8">
               {Object.entries(skills).map(([category, items]) => (
                 <div key={category}>
@@ -157,70 +167,96 @@ const Home = () => {
               <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">My Projects</h2>
               <p className="text-lg text-muted-foreground">Explore some of the projects I've worked on. These showcase my skills and expertise in various domains of software development.</p>
             </div>
-            
+
             <div className="grid gap-8 md:gap-12">
               {/* Project 1: SkillMatch */}
               <div className="project-card grid md:grid-cols-2 gap-8 items-center">
                 <div className="order-2 md:order-1">
-                  <img 
-                    src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
-                    alt="SkillMatch project interface" 
+                  <img
+                    src={SkillMatchImg}
+                    alt="SkillMatch project interface"
                     className="rounded-xl shadow-lg w-full h-64 object-cover"
                     data-testid="image-skillmatch"
                   />
                 </div>
                 <div className="order-1 md:order-2 space-y-4">
                   <h3 className="text-2xl font-bold font-heading">SkillMatch</h3>
-                  <p className="text-muted-foreground text-lg">A job portal connecting candidates with job profiles through skill matching.</p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 bg-blue-900/30 text-blue-400 rounded-full text-sm">React</span>
-                    <span className="px-3 py-1 bg-green-900/30 text-green-400 rounded-full text-sm">Node.js</span>
-                    <span className="px-3 py-1 bg-purple-900/30 text-purple-400 rounded-full text-sm">MongoDB</span>
-                    <span className="px-3 py-1 bg-gray-900/30 text-gray-400 rounded-full text-sm">Express</span>
-                    <span className="px-3 py-1 bg-teal-900/30 text-teal-400 rounded-full text-sm">Tailwind</span>
-                  </div>
-                  <div className="flex justify-end">
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="p-3 bg-secondary hover:bg-secondary/80 rounded-lg transition-colors duration-300"
-                      data-testid="link-skillmatch-github"
+                  <p className="text-muted-foreground text-lg">A job portal platform connecting students and recruiters. It allows students to create and update profiles, browse jobs, and apply, while recruiters can post jobs and filter candidates.</p>
+                  <div className="flex items-center justify-between flex-wrap gap-2">
+                    {/* Tech Stack Badges */}
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-blue-900/30 text-blue-400 rounded-full text-sm">React</span>
+                      <span className="px-3 py-1 bg-green-900/30 text-green-400 rounded-full text-sm">Node.js</span>
+                      <span className="px-3 py-1 bg-purple-900/30 text-purple-400 rounded-full text-sm">MongoDB</span>
+                      <span className="px-3 py-1 bg-gray-900/30 text-gray-400 rounded-full text-sm">Express</span>
+                      <span className="px-3 py-1 bg-teal-900/30 text-teal-400 rounded-full text-sm">Tailwind</span>
+                    </div>
+
+                    {/* GitHub Button */}
+                    <a
+                      href="https://github.com/jbhavyaa/Skill-Match"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      <Github className="text-xl" />
-                    </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="p-3 bg-secondary hover:bg-secondary/80 rounded-lg transition-colors duration-300"
+                        data-testid="link-skillmatch-github"
+                      >
+                        <Github className="text-xl" />
+                      </Button>
+                    </a>
+
                   </div>
+
                 </div>
               </div>
-              
+
               {/* Project 2: CricScore */}
               <div className="project-card grid md:grid-cols-2 gap-8 items-center">
                 <div className="order-2">
-                  <img 
-                    src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
-                    alt="CricScore project interface" 
+                  <img
+                    src={CricScoreImg}
+                    alt="CricScore project interface"
                     className="rounded-xl shadow-lg w-full h-64 object-cover"
                     data-testid="image-cricscore"
                   />
                 </div>
                 <div className="order-1 space-y-4">
                   <h3 className="text-2xl font-bold font-heading">CricScore</h3>
-                  <p className="text-muted-foreground text-lg">A box cricket match management system for tournaments.</p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 bg-blue-900/30 text-blue-400 rounded-full text-sm">React</span>
-                    <span className="px-3 py-1 bg-green-900/30 text-green-400 rounded-full text-sm">Node.js</span>
-                    <span className="px-3 py-1 bg-purple-900/30 text-purple-400 rounded-full text-sm">MongoDB</span>
-                  </div>
-                  <div className="flex justify-end">
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="p-3 bg-secondary hover:bg-secondary/80 rounded-lg transition-colors duration-300"
-                      data-testid="link-cricscore-github"
+                  <p className="text-muted-foreground text-lg">
+                    A web application that provides live cricket scores, match updates, player statistics, and upcoming fixtures.
+                  </p>
+
+                  <div className="flex items-center justify-between flex-wrap gap-2">
+                    {/* Tech Stack Badges */}
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-blue-900/30 text-blue-400 rounded-full text-sm">React</span>
+                      <span className="px-3 py-1 bg-green-900/30 text-green-400 rounded-full text-sm">Node.ts</span>
+                      <span className="px-3 py-1 bg-purple-900/30 text-purple-400 rounded-full text-sm">Drizzle</span>
+                      <span className="px-3 py-1 bg-teal-900/30 text-teal-400 rounded-full text-sm">Tailwind</span>
+                    </div>
+
+                    {/* GitHub Button */}
+                    <a
+                      href="https://github.com/shavik/Boxcricket"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      <Github className="text-xl" />
-                    </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="p-3 bg-secondary hover:bg-secondary/80 rounded-lg transition-colors duration-300"
+                        data-testid="link-skillmatch-github"
+                      >
+                        <Github className="text-xl" />
+                      </Button>
+                    </a>
+
                   </div>
                 </div>
+
               </div>
             </div>
           </SpotlightBox>
@@ -233,26 +269,26 @@ const Home = () => {
               <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">Work Experience</h2>
               <p className="text-lg text-muted-foreground">Companies I've worked with</p>
             </div>
-            
+
             <div className="max-w-2xl mx-auto">
-              <div 
+              <div
                 className={`experience-card bg-secondary/30 border border-border rounded-xl p-6 cursor-pointer ${isExperienceExpanded ? 'expanded' : ''}`}
                 onClick={() => setIsExperienceExpanded(!isExperienceExpanded)}
                 data-testid="card-experience"
               >
                 <div className="flex justify-between items-center">
                   <div>
-                    <h3 className="text-xl font-semibold font-heading">Nandidhi Software Pvt Ltd</h3>
+                    <h3 className="text-xl font-semibold font-heading">Nandidhi Software Pvt. Ltd.</h3>
                     <p className="text-primary font-medium flex items-center gap-2 hover:gap-3 transition-all duration-300">
                       React Developer Intern
-                      <ArrowRight 
-                        className={`text-sm transition-opacity duration-300 ${isExperienceExpanded ? 'opacity-100' : 'opacity-0'}`} 
+                      <ArrowRight
+                        className={`text-sm transition-opacity duration-300 ${isExperienceExpanded ? 'opacity-100' : 'opacity-0'}`}
                         size={16}
                       />
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="experience-details mt-6 pt-6 border-t border-border">
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start gap-3">
@@ -281,7 +317,7 @@ const Home = () => {
               <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">Achievements</h2>
               <p className="text-lg text-muted-foreground">Milestones and recognitions</p>
             </div>
-            
+
             <div className="grid md:grid-cols-2 gap-6">
               {achievements.map((achievement, index) => (
                 <div
@@ -309,42 +345,55 @@ const Home = () => {
               <p className="text-lg text-muted-foreground mb-8">I'm always excited to collaborate on interesting projects or just have a great tech conversation!</p>
               <h3 className="text-xl font-semibold mb-8">Ready to start a conversation?</h3>
             </div>
-            
+
             <div className="max-w-md mx-auto">
               <div className="bg-secondary/30 border border-border rounded-xl p-6 mb-8">
-                <div className="flex items-center gap-4 mb-6">
+                <div className="flex justify-center items-center gap-4">
                   <Mail className="text-primary text-xl" />
-                  <span className="text-lg" data-testid="email-address">your.email@example.com</span>
+                  <a
+                    href="mailto:bhavyajamar2004@gmail.com"
+                    className="text-lg text-white-500 hover:underline"
+                    data-testid="email-address"
+                  >
+                    bhavyajamar2004@gmail.com
+                  </a>
                 </div>
-                
+                <br></br>
                 <div className="flex justify-center gap-6">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="p-3 bg-muted hover:bg-primary rounded-lg transition-all duration-300 hover:scale-110"
-                    data-testid="link-github"
+                  <a
+                    href="https://github.com/jbhavyaa"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <Github className="text-xl" />
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="p-3 bg-muted hover:bg-primary rounded-lg transition-all duration-300 hover:scale-110"
-                    data-testid="link-linkedin"
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="p-3 bg-muted hover:bg-primary rounded-lg transition-all duration-300 hover:scale-110"
+                      data-testid="link-github"
+                    >
+                      <Github className="text-xl" />
+                    </Button>
+                  </a>
+
+                  <a
+                    href="https://www.linkedin.com/in/bhavya-jamar-938500248"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <Linkedin className="text-xl" />
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="p-3 bg-muted hover:bg-pink-500 rounded-lg transition-all duration-300 hover:scale-110"
-                    data-testid="link-instagram"
-                  >
-                    <Instagram className="text-xl" />
-                  </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="p-3 bg-muted hover:bg-primary rounded-lg transition-all duration-300 hover:scale-110"
+                      data-testid="link-linkedin"
+                    >
+                      <Linkedin className="text-xl" />
+                    </Button>
+                  </a>
+
                 </div>
+
               </div>
-              
+
               <p className="text-muted-foreground flex items-center justify-center gap-2">
                 <MessageCircle size={16} />
                 I typically respond within 30 minutes!

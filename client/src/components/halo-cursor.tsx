@@ -37,10 +37,12 @@ const HaloCursor = ({ targetSection = "intro" }: HaloCursorProps) => {
 
   return (
     <div
-      className={`halo-cursor ${isVisible ? "opacity-100" : "opacity-0"}`}
+      className={`halo-cursor ${isVisible ? "opacity-50" : "opacity-0"}`}
       style={{
         left: position.x,
         top: position.y,
+        width: "80px",   
+        height: "80px",
       }}
     />
   );

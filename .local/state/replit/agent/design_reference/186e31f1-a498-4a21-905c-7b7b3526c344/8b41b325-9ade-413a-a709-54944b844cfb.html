@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhavya - Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-in-out',
+                        'float': 'float 3s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)' },
+                            '100%': { boxShadow: '0 0 30px rgba(59, 130, 246, 0.6)' }
+                        }
+                    }
+                }
+            },
+            darkMode: 'class',
+        };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23000'/><text x='50%' y='50%' text-anchor='middle' dy='.35em' font-family='Arial' font-size='60' fill='white' font-weight='bold'>B</text></svg>">
+    
+    <style>
+        .spotlight-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .dark .spotlight-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .spotlight-box:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+        
+        .halo-cursor {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .halo-cursor::before {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        
+        .halo-cursor:hover::before {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="font-inter bg-black text-white dark transition-colors duration-300">
+    <!-- @COMPONENT: Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                        <span class="text-black font-bold text-lg">B</span>
+                    </div>
+                </div>
+                
+                <!-- Navigation Links -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#intro" class="text-gray-300 hover:text-white transition-colors duration-300">Intro</a>
+                        <a href="#skills" class="text-gray-300 hover:text-white transition-colors duration-300">Skills</a>
+                        <a href="#projects" class="text-gray-300 hover:text-white transition-colors duration-300">Projects</a>
+                        <a href="#experience" class="text-gray-300 hover:text-white transition-colors duration-300">Experience</a>
+                        <a href="#achievements" class="text-gray-300 hover:text-white transition-colors duration-300">Achievements</a>
+                        <a href="#contact" class="text-gray-300 hover:text-white transition-colors duration-300">Contact</a>
+                    </div>
+                </div>
+                
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-800 transition-colors duration-300">
+                    <i class="fas fa-moon text-xl"></i>
+                </button>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-black/95 backdrop-blur-md">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#intro" class="block px-3 py-2 text-gray-300 hover:text-white">Intro</a>
+                <a href="#skills" class="block px-3 py-2 text-gray-300 hover:text-white">Skills</a>
+                <a href="#projects" class="block px-3 py-2 text-gray-300 hover:text-white">Projects</a>
+                <a href="#experience" class="block px-3 py-2 text-gray-300 hover:text-white">Experience</a>
+                <a href="#achievements" class="block px-3 py-2 text-gray-300 hover:text-white">Achievements</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-300 hover:text-white">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navbar -->
+
+    <!-- @COMPONENT: IntroSection -->
+    <section id="intro" class="min-h-screen flex items-center justify-center pt-16 halo-cursor">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="spotlight-box rounded-2xl p-8 md:p-12 animate-fade-in">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+                    Hi, I'm Bhavya 👋
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8">
+                    React Developer & Tech Enthusiast
+                </p>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    I'm passionate about creating amazing web experiences with modern technologies. 
+                    Currently building dynamic frontend interfaces and exploring the endless possibilities of web development.
+                </p>
+                <div class="mt-8 flex justify-center space-x-4">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors duration-300">
+                        View My Work
+                    </button>
+                    <button class="border border-gray-600 hover:border-gray-400 text-gray-300 hover:text-white px-6 py-3 rounded-lg transition-colors duration-300">
+                        Get In Touch
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: IntroSection -->
+
+    <!-- @COMPONENT: SkillsSection -->
+    <section id="skills" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Skills I Have</h2>
+                <p class="text-xl text-gray-400">Technologies and tools I've worked with and enjoy using</p>
+            </div>
+            
+            <div class="spotlight-box rounded-2xl p-8">
+                <!-- Languages -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-400">Languages</h3>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex items-center space-x-3 hover:border-blue-500 transition-colors duration-300">
+                            <i class="fab fa-cuttlefish text-blue-400 text-xl"></i>
+                            <span>C++</span>
+                        </div>
+                        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex items-center space-x-3 hover:border-yellow-500 transition-colors duration-300">
+                            <i class="fab fa-js-square text-yellow-400 text-xl"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex items-center space-x-3 hover:border-orange-500 transition-colors duration-300">
+                            <i class="fab fa-html5 text-orange-400 text-xl"></i>
+                            <span>HTML</span>
+                        </div>
+                        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex items-center space-x-3 hover:border-blue-500 transition-colors duration-300">
+                            <i class="fab fa-css3-alt text-blue-400 text-xl"></i>
+                            <span>CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frameworks -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold mb-4 text-green-400">Frameworks</h3>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex items-center space-x-3 hover:border-cyan-500 transition-colors duration-300">
+                            <i class="fab fa-react text-cyan-400 text-xl"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex items-center space-x-3 hover:border-green-500 transition-colors duration-300">
+                            <i class="fab fa-node-js text-green-400 text-xl"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex items-center space-x-3 hover:border-gray-500 transition-colors duration-300">
+                            <i class="fas fa-server text-gray-400 text-xl"></i>
+                            <span>Express</span>
+                        </div>
+                        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex items-center space-x-3 hover:border-teal-500 transition-colors duration-300">
+                            <i class="fas fa-wind text-teal-400 text-xl"></i>
+                            <span>TailwindCSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold mb-4 text-purple-400">Tools</h3>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex items-center space-x-3 hover:border-orange-500 transition-colors duration-300">
+                            <i class="fab fa-git-alt text-orange-400 text-xl"></i>
+                            <span>Git</span>
+                        </div>
+                        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex items-center space-x-3 hover:border-gray-500 transition-colors duration-300">
+                            <i class="fab fa-github text-gray-400 text-xl"></i>
+                            <span>GitHub</span>
+                        </div>
+                        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex items-center space-x-3 hover:border-blue-500 transition-colors duration-300">
+                            <i class="fas fa-code text-blue-400 text-xl"></i>
+                            <span>VS Code</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Databases -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-green-400">Databases</h3>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex items-center space-x-3 hover:border-green-500 transition-colors duration-300">
+                            <i class="fas fa-leaf text-green-400 text-xl"></i>
+                            <span>MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: SkillsSection -->
+
+    <!-- @COMPONENT: ProjectsSection -->
+    <section id="projects" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">My Projects</h2>
+                <p class="text-xl text-gray-400">Explore some of the projects I've worked on. These showcase my skills and expertise in various domains of software development.</p>
+            </div>
+            
+            <!-- Project 1: SkillMatch -->
+            <div class="spotlight-box rounded-2xl p-8 mb-8">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <!-- Professional office environment with computers showing code -->
+                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" alt="Job portal interface mockup" class="rounded-lg shadow-lg w-full h-auto" />
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold mb-4 text-blue-400">SkillMatch</h3>
+                        <p class="text-gray-300 mb-6 leading-relaxed">
+                            A job portal connecting candidates with job profiles through skill matching. Features intelligent matching algorithms, user profiles, and real-time job recommendations.
+                        </p>
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold mb-2 text-gray-200">Tech Stack:</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-cyan-900 text-cyan-300 px-3 py-1 rounded-full text-sm">React</span>
+                                <span class="bg-green-900 text-green-300 px-3 py-1 rounded-full text-sm">Node.js</span>
+                                <span class="bg-green-900 text-green-300 px-3 py-1 rounded-full text-sm">MongoDB</span>
+                                <span class="bg-gray-900 text-gray-300 px-3 py-1 rounded-full text-sm">Express</span>
+                                <span class="bg-teal-900 text-teal-300 px-3 py-1 rounded-full text-sm">Tailwind</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-end">
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                                <i class="fab fa-github text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: CricScore -->
+            <div class="spotlight-box rounded-2xl p-8">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <!-- Cricket stadium or sports management interface -->
+                        <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" alt="Cricket match management system" class="rounded-lg shadow-lg w-full h-auto" />
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold mb-4 text-green-400">CricScore</h3>
+                        <p class="text-gray-300 mb-6 leading-relaxed">
+                            A box cricket match management system for tournaments. Features live scoring, team management, tournament brackets, and detailed match statistics.
+                        </p>
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold mb-2 text-gray-200">Tech Stack:</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-cyan-900 text-cyan-300 px-3 py-1 rounded-full text-sm">React</span>
+                                <span class="bg-green-900 text-green-300 px-3 py-1 rounded-full text-sm">Node.js</span>
+                                <span class="bg-green-900 text-green-300 px-3 py-1 rounded-full text-sm">MongoDB</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-end">
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                                <i class="fab fa-github text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ProjectsSection -->
+
+    <!-- @COMPONENT: ExperienceSection -->
+    <section id="experience" class="py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Work Experience</h2>
+                <p class="text-xl text-gray-400">Companies I've worked with</p>
+            </div>
+            
+            <div class="spotlight-box rounded-2xl p-8">
+                <div class="experience-card">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">Nandidhi Software Pvt Ltd</h3>
+                            <div class="flex items-center mt-2">
+                                <span class="text-blue-400 text-lg font-semibold cursor-pointer hover:text-blue-300 transition-colors duration-300" id="role-toggle">
+                                    React Developer
+                                </span>
+                                <i class="fas fa-arrow-right ml-2 text-gray-400 transition-transform duration-300" id="role-arrow"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="experience-details" class="hidden mt-6 p-4 bg-gray-800/50 rounded-lg border border-gray-700">
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                                <span>Developed dynamic frontend interfaces using React</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                                <span>Integrated REST APIs and improved UI responsiveness</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                                <span>Collaborated in a full-stack environment with designers and backend devs</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ExperienceSection -->
+
+    <!-- @COMPONENT: AchievementsSection -->
+    <section id="achievements" class="py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Achievements</h2>
+                <p class="text-xl text-gray-400">Recognition and milestones in my journey</p>
+            </div>
+            
+            <div class="spotlight-box rounded-2xl p-8">
+                <div class="grid gap-6">
+                    <div class="achievement-item bg-gray-800/50 rounded-lg p-6 border border-gray-700 hover:border-yellow-500 transition-colors duration-300">
+                        <div class="flex items-center">
+                            <i class="fas fa-medal text-yellow-400 text-2xl mr-4"></i>
+                            <span class="text-lg">Top 50 Finalist – Smart India Hackathon (Internal Round)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="achievement-item bg-gray-800/50 rounded-lg p-6 border border-gray-700 hover:border-blue-500 transition-colors duration-300">
+                        <div class="flex items-center">
+                            <i class="fas fa-graduation-cap text-blue-400 text-2xl mr-4"></i>
+                            <span class="text-lg">Student Director – Unstop</span>
+                        </div>
+                    </div>
+                    
+                    <div class="achievement-item bg-gray-800/50 rounded-lg p-6 border border-gray-700 hover:border-purple-500 transition-colors duration-300">
+                        <div class="flex items-center">
+                            <i class="fas fa-brain text-purple-400 text-2xl mr-4"></i>
+                            <span class="text-lg">PWC Launchpad Trainee</span>
+                        </div>
+                    </div>
+                    
+                    <div class="achievement-item bg-gray-800/50 rounded-lg p-6 border border-gray-700 hover:border-green-500 transition-colors duration-300">
+                        <div class="flex items-center">
+                            <i class="fas fa-microphone text-green-400 text-2xl mr-4"></i>
+                            <span class="text-lg">Management Head – Public Speaking Society</span>
+                        </div>
+                    </div>
+                    
+                    <div class="achievement-item bg-gray-800/50 rounded-lg p-6 border border-gray-700 hover:border-cyan-500 transition-colors duration-300">
+                        <div class="flex items-center">
+                            <i class="fas fa-code text-cyan-400 text-2xl mr-4"></i>
+                            <span class="text-lg">Web Development Team – GDG</span>
+                        </div>
+                    </div>
+                    
+                    <div class="achievement-item bg-gray-800/50 rounded-lg p-6 border border-gray-700 hover:border-red-500 transition-colors duration-300">
+                        <div class="flex items-center">
+                            <i class="fas fa-rocket text-red-400 text-2xl mr-4"></i>
+                            <span class="text-lg">Top 20 Finalist – Standard Chartered Hackathon (India-wide)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: AchievementsSection -->
+
+    <!-- @COMPONENT: ContactSection -->
+    <section id="contact" class="py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Let's Connect</h2>
+                <p class="text-xl text-gray-400">I'm always excited to collaborate on interesting projects or just have a great tech conversation!</p>
+            </div>
+            
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-semibold mb-8">Ready to start a conversation?</h3>
+                
+                <div class="spotlight-box rounded-2xl p-8 max-w-md mx-auto">
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-center space-x-3">
+                            <i class="fas fa-envelope text-blue-400 text-xl"></i>
+                            <span class="text-lg" data-mock="true">your.email@example.com</span>
+                        </div>
+                        
+                        <div class="flex justify-center space-x-6">
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
+                                <i class="fab fa-github text-2xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors duration-300">
+                                <i class="fab fa-linkedin text-2xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-pink-400 transition-colors duration-300">
+                                <i class="fab fa-instagram text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-gray-400">
+                    <i class="fas fa-comment-dots mr-2"></i>
+                    I typically respond within 30 minutes!
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ContactSection -->
+
+    <!-- @COMPONENT: Footer -->
+    <footer class="py-8 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <div class="text-center flex-1">
+                    <p class="text-gray-400">
+                        Made with <i class="fas fa-heart text-red-400"></i> by Bhavya
+                    </p>
+                </div>
+                <div>
+                    <button id="footer-theme-toggle" class="p-2 rounded-lg hover:bg-gray-800 transition-colors duration-300">
+                        <i class="fas fa-moon text-xl text-gray-400"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        (function() {
+            // TODO: Implement business logic, API calls, or state management
+            
+            // Theme Toggle Functionality
+            const themeToggle = document.getElementById('theme-toggle');
+            const footerThemeToggle = document.getElementById('footer-theme-toggle');
+            const html = document.documentElement;
+            
+            function toggleTheme() {
+                if (html.classList.contains('dark')) {
+                    html.classList.remove('dark');
+                    html.classList.add('light');
+                    document.body.className = 'font-inter bg-white text-black light transition-colors duration-300';
+                    themeToggle.innerHTML = '<i class="fas fa-sun text-xl"></i>';
+                    footerThemeToggle.innerHTML = '<i class="fas fa-sun text-xl text-gray-600"></i>';
+                } else {
+                    html.classList.remove('light');
+                    html.classList.add('dark');
+                    document.body.className = 'font-inter bg-black text-white dark transition-colors duration-300';
+                    themeToggle.innerHTML = '<i class="fas fa-moon text-xl"></i>';
+                    footerThemeToggle.innerHTML = '<i class="fas fa-moon text-xl text-gray-400"></i>';
+                }
+            }
+            
+            themeToggle.addEventListener('click', toggleTheme);
+            footerThemeToggle.addEventListener('click', toggleTheme);
+            
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Experience Card Toggle
+            const roleToggle = document.getElementById('role-toggle');
+            const experienceDetails = document.getElementById('experience-details');
+            const roleArrow = document.getElementById('role-arrow');
+            
+            roleToggle.addEventListener('click', function() {
+                experienceDetails.classList.toggle('hidden');
+                roleArrow.classList.toggle('rotate-90');
+            });
+            
+            // Smooth Scroll for Navigation Links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+            
+            // Fade-in Animation on Scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all spotlight boxes
+            document.querySelectorAll('.spotlight-box').forEach(box => {
+                observer.observe(box);
+            });
+            
+            // Halo Cursor Effect for Intro Section
+            const haloSection = document.querySelector('.halo-cursor');
+            if (haloSection) {
+                haloSection.addEventListener('mousemove', function(e) {
+                    const rect = haloSection.getBoundingClientRect();
+                    const x = e.clientX - rect.left - 50; // Offset for cursor center
+                    const y = e.clientY - rect.top - 50;
+                    
+                    haloSection.style.setProperty('--mouse-x', x + 'px');
+                    haloSection.style.setProperty('--mouse-y', y + 'px');
+                    
+                    const halo = haloSection.querySelector('::before');
+                    if (halo) {
+                        halo.style.left = x + 'px';
+                        halo.style.top = y + 'px';
+                    }
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
