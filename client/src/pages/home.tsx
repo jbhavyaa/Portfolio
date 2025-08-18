@@ -278,7 +278,7 @@ const Home = () => {
               >
                 <div className="flex justify-between items-center">
                   <div>
-                    <h3 className="text-xl font-semibold font-heading">Nandidhi Software Pvt. Ltd.</h3>
+                    <h3 className="text-xl font-semibold font-heading">Nandishi Software Pvt. Ltd.</h3>
                     <p className="text-primary font-medium flex items-center gap-2 hover:gap-3 transition-all duration-300">
                       React Developer Intern
                       <ArrowRight
