@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import {
   SiJavascript,
+  SiTypescript,
   SiHtml5,
   SiCss3,
   SiC,
@@ -27,10 +28,15 @@ import {
   SiTailwindcss,
   SiGit,
   SiGithub,
-
   SiMongodb,
   SiFigma,
-  SiMysql
+  SiMysql,
+  SiPostgresql,
+  SiFirebase,
+  SiDocker,
+  SiTerraform,
+  SiAmazonwebservices,
+  SiJenkins,
 } from "react-icons/si";
 import { useTheme } from "@/components/ui/theme-provider";
 import { Button } from "@/components/ui/button";
@@ -40,6 +46,7 @@ import HaloCursor from "@/components/halo-cursor";
 
 const Home = () => {
   const [isExperienceExpanded, setIsExperienceExpanded] = useState(false);
+  const [isAthenaExpanded, setIsAthenaExpanded] = useState(false);
   const { theme, setTheme } = useTheme();
 
   const toggleTheme = () => {
@@ -60,26 +67,35 @@ const Home = () => {
   const skills = {
     "Languages": [
       { name: "JavaScript", icon: SiJavascript, color: "text-yellow-400" },
+      { name: "TypeScript", icon: SiTypescript, color: "text-blue-500" },
       { name: "HTML", icon: SiHtml5, color: "text-orange-400" },
       { name: "CSS", icon: SiCss3, color: "text-blue-400" },
       { name: "C++", icon: SiCplusplus, color: "text-purple-400" },
       { name: "C", icon: SiC, color: "text-purple-400" },
     ],
-    "Frameworks": [
+    "Frameworks & Libraries": [
       { name: "React", icon: SiReact, color: "text-cyan-400" },
       { name: "Node.js", icon: SiNodedotjs, color: "text-green-400" },
       { name: "Express", icon: SiExpress, color: "text-gray-400" },
       { name: "TailwindCSS", icon: SiTailwindcss, color: "text-teal-400" },
+    ],
+    "Databases": [
+      { name: "MongoDB", icon: SiMongodb, color: "text-green-500" },
+      { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-400" },
+      { name: "MySQL", icon: SiMysql, color: "text-blue-500" },
+      { name: "Firebase", icon: SiFirebase, color: "text-yellow-500" },
+    ],
+    "Cloud & DevOps": [
+      { name: "AWS", icon: SiAmazonwebservices, color: "text-orange-400" },
+      { name: "Docker", icon: SiDocker, color: "text-blue-400" },
+      { name: "Terraform", icon: SiTerraform, color: "text-purple-400" },
+      { name: "Jenkins", icon: SiJenkins, color: "text-red-400" },
     ],
     "Tools": [
       { name: "Git", icon: SiGit, color: "text-red-400" },
       { name: "GitHub", icon: SiGithub, color: "text-gray-300" },
       { name: "VS Code", icon: Code, color: "text-blue-400" },
       { name: "Figma", icon: SiFigma, color: "text-purple-400" },
-    ],
-    "Databases": [
-      { name: "MongoDB", icon: SiMongodb, color: "text-green-500" },
-      { name: "SQL", icon: SiMysql, color: "text-blue-500" },
     ],
   };
 
@@ -88,7 +104,7 @@ const Home = () => {
     { emoji: "🚀", title: "Top 20 Finalist", description: "Standard Chartered Hackathon (India-wide)", detail: "Developed a project after clearing the coding test for inclusion among top 20 teams" },
     { emoji: "🧠", title: "PWC Launchpad Trainee", description: "Professional Development Program", detail: "Completed Technology and Transformation Launchpad Program" },
     { emoji: "🗣️", title: "Management Head", description: "Public Speaking Society", detail: "Organized workshops and competitions to enhance communication skills" },
-    { emoji: "💻", title: "Executive Member", description: "Google Developer Groups", detail: "Contributing to open-source projects and mentoring junior developers" },
+    { emoji: "💻", title: "Web Development Lead", description: "Google Developer Student's Club, MUST", detail: "Led web development initiatives and contributed to open-source projects and mentoring junior developers" },
     { emoji: "🏅", title: "Academic Scholar", description: "Mody University", detail: "Recognized each year with a scholarship for outstanding academic performance." },
   ];
 
@@ -115,7 +131,7 @@ const Home = () => {
 
             <div className="flex justify-center">
               <a
-                href="https://drive.google.com/file/d/1Gk1U_joquP8-Nn2w1LPGcIR00VYwV0S_/view?usp=drivesdk"
+                href="https://drive.google.com/file/d/1z7jkD6ZO86k_g5uGBOwJR_G6vlg2QkZH/view?usp=drivesdk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-2xl font-medium transition-all duration-300 transform hover:scale-105 shadow-lg"
@@ -225,19 +241,18 @@ const Home = () => {
                 <div className="order-1 space-y-4">
                   <h3 className="text-2xl font-bold font-heading">CricScore</h3>
                   <p className="text-muted-foreground text-lg">
-                    A web application that provides live cricket scores, match updates, player statistics, and upcoming fixtures.
+                    A box cricket management platform supporting 10+ concurrent matches with live score tracking, real-time updates, and player statistics. Integrated Firebase for authentication and real-time data sync.
                   </p>
 
                   <div className="flex items-center justify-between flex-wrap gap-2">
-                    {/* Tech Stack Badges */}
                     <div className="flex flex-wrap gap-2">
                       <span className="px-3 py-1 bg-blue-900/30 text-blue-400 rounded-full text-sm">React</span>
-                      <span className="px-3 py-1 bg-green-900/30 text-green-400 rounded-full text-sm">Node.ts</span>
-                      <span className="px-3 py-1 bg-purple-900/30 text-purple-400 rounded-full text-sm">Drizzle</span>
-                      <span className="px-3 py-1 bg-teal-900/30 text-teal-400 rounded-full text-sm">Tailwind</span>
+                      <span className="px-3 py-1 bg-green-900/30 text-green-400 rounded-full text-sm">Node.js</span>
+                      <span className="px-3 py-1 bg-purple-900/30 text-purple-400 rounded-full text-sm">Drizzle ORM</span>
+                      <span className="px-3 py-1 bg-yellow-900/30 text-yellow-400 rounded-full text-sm">Firebase</span>
+                      <span className="px-3 py-1 bg-gray-900/30 text-gray-400 rounded-full text-sm">Express</span>
                     </div>
 
-                    {/* GitHub Button */}
                     <a
                       href="https://github.com/shavik/Boxcricket"
                       target="_blank"
@@ -247,15 +262,45 @@ const Home = () => {
                         variant="ghost"
                         size="icon"
                         className="p-3 bg-secondary hover:bg-secondary/80 rounded-lg transition-colors duration-300"
-                        data-testid="link-skillmatch-github"
+                        data-testid="link-cricscore-github"
                       >
                         <Github className="text-xl" />
                       </Button>
                     </a>
-
                   </div>
                 </div>
+              </div>
 
+              {/* Project 3: Placement Portal */}
+              <div className="project-card bg-secondary/30 border border-border rounded-xl p-6 space-y-4">
+                <h3 className="text-2xl font-bold font-heading">Placement Portal</h3>
+                <p className="text-muted-foreground text-lg">
+                  A college placement tracking platform for 150+ students with job applications, PPT scheduling, and eligibility checks. Placement coordinators get bar chart dashboards for company-wise and batch-wise trend analysis.
+                </p>
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-3 py-1 bg-blue-900/30 text-blue-400 rounded-full text-sm">React</span>
+                    <span className="px-3 py-1 bg-blue-900/30 text-blue-500 rounded-full text-sm">TypeScript</span>
+                    <span className="px-3 py-1 bg-green-900/30 text-green-400 rounded-full text-sm">Node.js</span>
+                    <span className="px-3 py-1 bg-blue-900/30 text-blue-400 rounded-full text-sm">PostgreSQL</span>
+                    <span className="px-3 py-1 bg-yellow-900/30 text-yellow-400 rounded-full text-sm">JWT</span>
+                  </div>
+
+                  <a
+                    href="https://github.com/jbhavyaa/PlacementPortal"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="p-3 bg-secondary hover:bg-secondary/80 rounded-lg transition-colors duration-300"
+                      data-testid="link-placementportal-github"
+                    >
+                      <Github className="text-xl" />
+                    </Button>
+                  </a>
+                </div>
               </div>
             </div>
           </SpotlightBox>
@@ -269,17 +314,55 @@ const Home = () => {
               <p className="text-lg text-muted-foreground">Companies I've worked with</p>
             </div>
 
-            <div className="max-w-2xl mx-auto">
+            <div className="max-w-2xl mx-auto space-y-4">
+              {/* Athenahealth */}
               <div
-                className={`experience-card bg-secondary/30 border border-border rounded-xl p-6 cursor-pointer ${isExperienceExpanded ? 'expanded' : ''}`}
-                onClick={() => setIsExperienceExpanded(!isExperienceExpanded)}
-                data-testid="card-experience"
+                className={`experience-card bg-secondary/30 border border-border rounded-xl p-6 cursor-pointer ${isAthenaExpanded ? 'expanded' : ''}`}
+                onClick={() => setIsAthenaExpanded(!isAthenaExpanded)}
+                data-testid="card-experience-athena"
               >
                 <div className="flex justify-between items-center">
                   <div>
-                    <h3 className="text-xl font-semibold font-heading">Nandishi Software Pvt. Ltd.</h3>
+                    <h3 className="text-xl font-semibold font-heading">Athenahealth</h3>
                     <p className="text-primary font-medium flex items-center gap-2 hover:gap-3 transition-all duration-300">
-                      React Developer Intern
+                      Product Engineering Intern · Jan 2025 – Jun 2025
+                      <ArrowRight
+                        className={`text-sm transition-opacity duration-300 ${isAthenaExpanded ? 'opacity-100' : 'opacity-0'}`}
+                        size={16}
+                      />
+                    </p>
+                  </div>
+                </div>
+
+                <div className="experience-details mt-6 pt-6 border-t border-border">
+                  <ul className="space-y-3 text-muted-foreground">
+                    <li className="flex items-start gap-3">
+                      <Check className="text-primary mt-1 text-sm" size={16} />
+                      <span>Built Reporting Hub, an internal analytics platform featuring QueryHub (parameterized query library) and ChatWithData (conversational AI interface powered by Snowflake Cortex Analyst), enabling teams to query live production data without writing SQL.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="text-primary mt-1 text-sm" size={16} />
+                      <span>Designed Okta OAuth 2.0 SSO with server-side token storage; provisioned AWS infrastructure (ECS, ALB, S3, IAM) via Terraform across dev, staging, and prod; built a Jenkins CI/CD pipeline with blue-green deployment.</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Check className="text-primary mt-1 text-sm" size={16} />
+                      <span>Built 15 AI debugging skill files across 13 workflows integrating the Jira MCP server to triage tickets, surface root causes, and post resolution summaries — actively adopted by the team.</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Nandishi Softwares */}
+              <div
+                className={`experience-card bg-secondary/30 border border-border rounded-xl p-6 cursor-pointer ${isExperienceExpanded ? 'expanded' : ''}`}
+                onClick={() => setIsExperienceExpanded(!isExperienceExpanded)}
+                data-testid="card-experience-nandishi"
+              >
+                <div className="flex justify-between items-center">
+                  <div>
+                    <h3 className="text-xl font-semibold font-heading">Nandishi Softwares</h3>
+                    <p className="text-primary font-medium flex items-center gap-2 hover:gap-3 transition-all duration-300">
+                      Full-Stack Developer Intern · Jun 2024 – Jul 2024
                       <ArrowRight
                         className={`text-sm transition-opacity duration-300 ${isExperienceExpanded ? 'opacity-100' : 'opacity-0'}`}
                         size={16}
@@ -292,15 +375,15 @@ const Home = () => {
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start gap-3">
                       <Check className="text-primary mt-1 text-sm" size={16} />
-                      <span>Developed dynamic frontend interfaces using React.</span>
+                      <span>Built CricScore, a box cricket management platform supporting 10+ concurrent matches with live score tracking, real-time updates, and player statistics using React, Node.js, Express, Drizzle ORM, and REST APIs.</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <Check className="text-primary mt-1 text-sm" size={16} />
-                      <span>Integrated REST APIs and improved UI responsiveness.</span>
+                      <span>Integrated Firebase for authentication and real-time data sync; wrote integration tests for critical API flows.</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <Check className="text-primary mt-1 text-sm" size={16} />
-                      <span>Collaborated in a full-stack environment with designers and backend devs.</span>
+                      <span>Managed version control and Agile/Scrum workflow via GitHub.</span>
                     </li>
                   </ul>
                 </div>
